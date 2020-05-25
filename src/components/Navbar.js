@@ -181,7 +181,7 @@ const Navbar = (props) => {
         </Row>
       </div>
       <div className="modal">
-        <Modal isOpen={modal} toggle={toggle} className={"modall"}>
+        <Modal isOpen={modal} toggle={toggle} className={className}>
           <ModalHeader toggle={toggle}>Login</ModalHeader>
           <ModalBody>
             <Switch>

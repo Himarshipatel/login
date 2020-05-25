@@ -87,6 +87,17 @@ function reducer(state = initialState, action) {
         cart,
         total,
       };
+    case "SIGNIN_USER":
+      return { ...state, error: null, authenticated: false };
+
+    case "SIGNIN_USER_SUCCESS":
+      return {
+        ...state,
+        error: null,
+        username: action.payload,
+        authenticated: true,
+      };
+
     default:
       return state;
   }

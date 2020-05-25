@@ -6,6 +6,7 @@ import {
   ADD_TO_CART,
   SUBTRACT,
   REMOVE_ITEM_FROM_CART,
+  SIGNIN_USER_SUCCESS,
 } from "./actionType";
 
 export function fetchDataRequest() {
@@ -54,5 +55,11 @@ export function removeItemFromCart(id, amount) {
     type: REMOVE_ITEM_FROM_CART,
     itemToRemove: id,
     amount: amount,
+  };
+}
+export function signinUserSuccess(payload) {
+  return {
+    type: SIGNIN_USER_SUCCESS,
+    payload,
   };
 }
