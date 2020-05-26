@@ -76,16 +76,29 @@
 // }
 // export default Login;
 
-import React from "react";
+import React, { useEffect } from "react";
+import { signinUser } from "../actions/fetchData.js";
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
 
-export default function Login() {
+// const { authenticated } = useSelector((state) => ({
+//   authenticated: state.products.authenticated,
+// }));
+
+// useEffect(() => {
+//   dispatch(signinUser({ name, email }));
+// }, [dispatch, name, email]);
+
+const Login = () => {
+  const dispatch = useDispatch();
+
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data, e) => {
-    console.log("Submit event", e);
-    alert(JSON.stringify(data));
+  // const onSubmit = (name, e) => {
+  //   // dispatch(signinUser({ name }));
+  // };
+  const onSubmit = ({ name, email }) => {
+    dispatch(signinUser({ name, email }));
   };
-
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <input name="name" ref={register} />
@@ -93,4 +106,5 @@ export default function Login() {
       <button type="submit">Submit</button>
     </form>
   );
-}
+};
+export default Login;

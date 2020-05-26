@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
-//import { browserHistory } from "react-router";
+//import { browserHistory } from "react-router-dom";
 //const API_URL = "http://127.0.0.1:8000/api";
-
+import History from "../history.js";
 import {
   fetchDataRequest,
   fetchDataSuccess,
@@ -10,7 +10,7 @@ import {
   // SIGNIN_USER,
   signinUserSuccess,
 } from "./action";
-
+const api_token = "null";
 export function fetchProducts() {
   return (dispatch) => {
     dispatch(fetchDataRequest());
@@ -31,12 +31,19 @@ export function signinUser({ name, email }) {
     axios
       .post(`http://127.0.0.1:8000/api/login`, { name, email })
       .then((response) => {
-        dispatch(signinUserSuccess(response.data.content.username));
+        dispatch(signinUserSuccess({ name, email }));
         console.log(response);
-        // - Save the JWT token
-        localStorage.setItem("auth", response.data.user.api_token);
-        // - redirect to the route '/dashboard'
-        // browserHistory.push("/");
+
+        localStorage.setItem(
+          "auth",
+          JSON.stringify({
+            token: response.data.user.api_token,
+          })
+        );
+
+        console.log(api_token);
+
+        History.push("/");
       });
     // .catch((error) => dispatch(onError(error)));
   };
