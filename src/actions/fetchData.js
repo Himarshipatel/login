@@ -10,7 +10,7 @@ import {
   // SIGNIN_USER,
   signinUserSuccess,
 } from "./action";
-const api_token = "null";
+//const api_token = "null";
 export function fetchProducts() {
   return (dispatch) => {
     dispatch(fetchDataRequest());
@@ -31,19 +31,15 @@ export function signinUser({ name, email }) {
     axios
       .post(`http://127.0.0.1:8000/api/login`, { name, email })
       .then((response) => {
-        dispatch(signinUserSuccess({ name, email }));
-        console.log(response);
-
-        localStorage.setItem(
-          "auth",
-          JSON.stringify({
-            token: response.data.user.api_token,
-          })
-        );
-
+        dispatch(signinUserSuccess(response.data.data.user.name, email));
+        console.log(name);
+        localStorage.setItem("auth", {
+          api_token: response.data.data.user.api_token,
+        });
         console.log(api_token);
+        // console.log(api_token);
 
-        History.push("/");
+        //History.push("/");
       });
     // .catch((error) => dispatch(onError(error)));
   };
