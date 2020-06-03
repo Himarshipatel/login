@@ -7,3 +7,4 @@ export const SUBTRACT = "SUBTRACT";
 export const REMOVE_ITEM_FROM_CART = "REMOVE_ITEM_FROM_CART";
 export const SIGNIN_USER = "SIGNIN_USER";
 export const SIGNIN_USER_SUCCESS = "SIGNIN_USER_SUCCESS";
+export const AUTH_ERROR = "auth_error";

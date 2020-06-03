@@ -2,14 +2,17 @@ import React from "react";
 import axios from "axios";
 //import { browserHistory } from "react-router-dom";
 //const API_URL = "http://127.0.0.1:8000/api";
-import History from "../history.js";
+
+import history from "../history.js";
 import {
   fetchDataRequest,
   fetchDataSuccess,
   fetchDataError,
   // SIGNIN_USER,
   signinUserSuccess,
+  authError,
 } from "./action";
+
 //const api_token = "null";
 export function fetchProducts() {
   return (dispatch) => {
@@ -24,23 +27,33 @@ export function fetchProducts() {
       });
   };
 }
+
 export function signinUser({ name, email }) {
+  let token;
+
   return (dispatch) => {
     // dispatch(SIGNIN_USER());
 
     axios
-      .post(`http://127.0.0.1:8000/api/login`, { name, email })
+      .post("http://127.0.0.1:8000/api/login", { name, email })
       .then((response) => {
-        dispatch(signinUserSuccess(response.data.data.user.name, email));
-        console.log(name);
-        localStorage.setItem("auth", {
-          api_token: response.data.data.user.api_token,
-        });
-        console.log(api_token);
-        // console.log(api_token);
+        console.log(response);
+        dispatch(
+          signinUserSuccess(
+            response.data.data.user.name,
+            response.data.data.user.email
+          )
+        );
+        // console.log(name);
+        localStorage.setItem(
+          "auth",
+          (token = response.data.data.user.api_token)
+        );
 
-        //History.push("/");
+        console.log(token);
+
+        // history.push("/cart");
       });
-    // .catch((error) => dispatch(onError(error)));
+    //dispatch(authError(confirm("somting wrong")));
   };
 }

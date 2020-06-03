@@ -4,6 +4,7 @@ let initialState = {
   cart: [],
   total: 0,
   error: null,
+  authenticated: false,
 };
 
 function reducer(state = initialState, action) {
@@ -87,8 +88,8 @@ function reducer(state = initialState, action) {
         cart,
         total,
       };
-    case "SIGNIN_USER":
-      return { ...state, error: null, authenticated: false };
+    // case "SIGNIN_USER":
+    //   return { ...state, error: null, authenticated: false };
 
     case "SIGNIN_USER_SUCCESS":
       return {
@@ -97,6 +98,8 @@ function reducer(state = initialState, action) {
         username: action.payload,
         authenticated: true,
       };
+    case "AUTH_ERROR":
+      return { ...state, error: action.payload };
 
     default:
       return state;

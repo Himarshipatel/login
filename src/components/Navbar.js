@@ -22,7 +22,7 @@ import {
 import Carousel from "react-bootstrap/Carousel";
 import Login from "./Login";
 import Protected from "./Protected";
-
+//import history from "../history.js";
 import CartList from "./cartList.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
@@ -38,7 +38,7 @@ import {
   Form,
   FormGroup,
 } from "reactstrap";
-
+import { Redirect } from "react-router-dom";
 //import Total from "./total.js";
 import Image from "react-bootstrap/Image";
 
@@ -48,6 +48,9 @@ const Navbar = (props) => {
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);
+  var auth = localStorage.getItem("auth");
+  console.log(auth);
+
   return (
     <BrowserRouter>
       <div>
@@ -163,23 +166,33 @@ const Navbar = (props) => {
             </Col>
           </Col>
           {/* </Col> */}
+          {auth ? (
+            <div>
+              <Redirect to="/"></Redirect>
+              <Switch>
+                <Route path="/cart" component={CartList} />
 
+                <Route path="/" component={ItemList} />
+              </Switch>
+            </div>
+          ) : (
+            <div>
+              <Redirect to="/login"></Redirect>
+            </div>
+          )}
           <Switch>
-            <Route path="/cart" component={CartList} />
-
-            {/* <Route path="/" component={ItemList} /> */}
-          </Switch>
-          <Switch>
+            {/* { */}
             {/* <Route path="/login">
               <Login />
             </Route> */}
 
-            <Route path="/">
+            {/* <Route path="/">
               <Protected cmp={ItemList} />
-            </Route>
+            </Route> */}
           </Switch>
         </Row>
       </div>
+
       <div className="modal">
         <Modal isOpen={modal} toggle={toggle} className={className}>
           <ModalHeader toggle={toggle}>Login</ModalHeader>

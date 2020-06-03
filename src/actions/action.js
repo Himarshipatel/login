@@ -7,6 +7,7 @@ import {
   SUBTRACT,
   REMOVE_ITEM_FROM_CART,
   SIGNIN_USER_SUCCESS,
+  AUTH_ERROR,
 } from "./actionType";
 
 export function fetchDataRequest() {
@@ -63,3 +64,9 @@ export function signinUserSuccess(payload) {
     payload,
   };
 }
+export const authError = (error) => {
+  return {
+    type: AUTH_ERROR,
+    payload: error,
+  };
+};
