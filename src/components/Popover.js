@@ -44,14 +44,14 @@ const Popoverr = () => {
           <Row>
             <Col sm="5">
               <button onClick={(e) => subtractItem(e, i.id)}>-</button>
-              <button>{i.cartCount}</button>
+              <button>{i.quantity}</button>
               <button onClick={(e) => addItem(e, i.id)}>+</button>
             </Col>
             <br />
             <Col sm="4">
               <Button
                 color="danger"
-                onClick={(e) => removeItem(e, i.id, i.price * i.cartCount)}
+                onClick={(e) => removeItem(e, i.id, i.price * i.quantity)}
               >
                 Remove
               </Button>

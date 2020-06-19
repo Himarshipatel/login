@@ -8,6 +8,8 @@ import {
   REMOVE_ITEM_FROM_CART,
   SIGNIN_USER_SUCCESS,
   AUTH_ERROR,
+  ORDER_SUCCESS,
+  ORDER_ERROR,
 } from "./actionType";
 
 export function fetchDataRequest() {
@@ -67,6 +69,18 @@ export function signinUserSuccess(payload) {
 export const authError = (error) => {
   return {
     type: AUTH_ERROR,
+    payload: error,
+  };
+};
+export function orderSuccess(item) {
+  return {
+    type: ORDER_SUCCESS,
+    item,
+  };
+}
+export const orderError = (error) => {
+  return {
+    type: ORDER_ERROR,
     payload: error,
   };
 };

@@ -5,6 +5,8 @@ let initialState = {
   total: 0,
   error: null,
   authenticated: false,
+  username: [],
+  email: [],
 };
 
 function reducer(state = initialState, action) {
@@ -33,7 +35,9 @@ function reducer(state = initialState, action) {
       };
     case "ADD_TO_CART":
       foundIndex = item.findIndex((x) => x.id === action.itemToBeAdded);
-      item[foundIndex]["cartCount"] = 1;
+      item[foundIndex]["quantity"] = 1;
+      //item[foundIndex]["quantity"] = item[foundIndex]["quantity"];
+      item[foundIndex]["product_id"] = item[foundIndex]["id"];
       cart.push(item[foundIndex]);
       total = total + item[foundIndex]["price"];
       return {
@@ -44,9 +48,9 @@ function reducer(state = initialState, action) {
       };
     case "ADD":
       foundIndex = item.findIndex((x) => x.id === action.itemInc);
-      item[foundIndex]["cartCount"] = item[foundIndex]["cartCount"] + 1;
+      item[foundIndex]["quantity"] = item[foundIndex]["quantity"] + 1;
       foundIndexCart = cart.findIndex((x) => x.id === action.itemInc);
-      cart[foundIndexCart]["cartCount"] = item[foundIndex]["cartCount"];
+      cart[foundIndexCart]["quantity"] = item[foundIndex]["quantity"];
       total = total + item[foundIndex]["price"];
       return {
         ...state,
@@ -56,15 +60,15 @@ function reducer(state = initialState, action) {
       };
     case "SUBTRACT":
       foundIndex = item.findIndex((x) => x.id === action.itemDec);
-      item[foundIndex]["cartCount"] = item[foundIndex]["cartCount"] - 1;
-      if (item[foundIndex]["cartCount"] === 0) {
+      item[foundIndex]["quantity"] = item[foundIndex]["quantity"] - 1;
+      if (item[foundIndex]["quantity"] === 0) {
         cart = cart.filter(function (obj) {
           return obj.id !== item[foundIndex].id;
         });
-        delete item[foundIndex]["cartCount"];
+        delete item[foundIndex]["quantity"];
       } else {
         foundIndexCart = cart.findIndex((x) => x.id === action.itemDec);
-        cart[foundIndexCart]["cartCount"] = item[foundIndex]["cartCount"];
+        cart[foundIndexCart]["quantity"] = item[foundIndex]["quantity"];
       }
       total = total - item[foundIndex]["price"];
       return {
@@ -79,7 +83,7 @@ function reducer(state = initialState, action) {
       cart = cart.filter(function (obj) {
         return obj.id !== item[foundIndex].id;
       });
-      delete item[foundIndex]["cartCount"];
+      delete item[foundIndex]["quantity"];
       total = total - action.amount;
 
       return {
@@ -99,6 +103,17 @@ function reducer(state = initialState, action) {
         authenticated: true,
       };
     case "AUTH_ERROR":
+      return { ...state, error: action.payload };
+
+    case "ORDER_SUCCESS":
+      return {
+        ...state,
+        items: [],
+        error: null,
+        //username: action.payload,
+        authenticated: true,
+      };
+    case " ORDER_ERROR":
       return { ...state, error: action.payload };
 
     default:

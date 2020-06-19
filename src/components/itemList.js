@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart, add, subtract } from "../actions/action";
 import { Button, Card, Row, Col } from "reactstrap";
 import Image from "react-bootstrap/Image";
+import Navbar from "./Navbar";
 const ItemList = () => {
   // const item = useSelector((state) => state.products.item);
   //const cart = useSelector((state) => state.products.cart);
@@ -11,12 +12,13 @@ const ItemList = () => {
   const { item } = useSelector((state) => ({
     item: state.products.item,
   }));
+  console.log(item);
   const dispatch = useDispatch();
 
   const addToCartItem = (e, id) => {
     dispatch(addToCart(id));
   };
-
+  console.log(addToCart);
   const addItem = (e, id) => {
     dispatch(add(id));
   };
@@ -27,6 +29,7 @@ const ItemList = () => {
 
   return (
     <div>
+      {/* <Navbar /> */}
       <div>
         <br />
         <h3 className="natural">natural Ingredient</h3>
@@ -52,7 +55,7 @@ const ItemList = () => {
             {i.description}
             <p>Price : {i.price}$</p>
 
-            {!i.cartCount ? (
+            {!i.quantity ? (
               <Button color="danger" onClick={(e) => addToCartItem(e, i.id)}>
                 Add to cart
               </Button>
@@ -69,7 +72,7 @@ const ItemList = () => {
                 </Col>
                 <Col sm="4">
                   <Button className="butnum" color="success">
-                    {i.cartCount}
+                    {i.quantity}
                   </Button>
                 </Col>
                 <Col sm="4">

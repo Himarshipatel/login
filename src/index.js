@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import Main from "./components/main.js";
+import Main from "./components/main";
+import Success from "./components/Success.js";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { Provider } from "react-redux";
