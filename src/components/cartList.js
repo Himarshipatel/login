@@ -54,7 +54,7 @@ const CartList = () => {
                 <h3>{i.name}</h3>
                 <p> Ingredient :</p>
                 <p>{i.description}</p>
-                <p>Price : {i.price}$</p>
+                <p>Price : ${i.price}</p>
                 {/* <div className="number"> */}
                 <Row>
                   <Col sm="6">

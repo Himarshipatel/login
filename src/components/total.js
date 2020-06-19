@@ -19,7 +19,7 @@ import { useSelector } from "react-redux";
 const Total = () => {
   const total = useSelector((state) => state.products.total);
 
-  return <div className="total">Total : {total}$</div>;
+  return <div className="total">Total : ${total}</div>;
 
   // const mapStateToProps = (state) => ({
   //   total: state.products.total,

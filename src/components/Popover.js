@@ -39,7 +39,7 @@ const Popoverr = () => {
           <h3>{i.name}</h3>
           <p>Ingredient :</p>
           <Col className="popdesc">{i.description}</Col>
-          <p>Price : {i.price}$</p>
+          <p>Price : ${i.price}</p>
           {/* <div className="number"> */}
           <Row>
             <Col sm="5">

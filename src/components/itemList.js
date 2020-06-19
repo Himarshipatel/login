@@ -53,7 +53,7 @@ const ItemList = () => {
             <Col>{i.name}</Col>
             <p>Ingredient :</p>
             {i.description}
-            <p>Price : {i.price}$</p>
+            <p>Price : ${i.price}</p>
 
             {!i.quantity ? (
               <Button color="danger" onClick={(e) => addToCartItem(e, i.id)}>
