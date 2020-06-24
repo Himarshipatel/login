@@ -19,7 +19,6 @@ const Popoverr = () => {
   };
 
   const removeItem = (e, id, amount) => {
-    // console.log("amount", amount);
     dispatch(removeItemFromCart(id, amount));
   };
 
@@ -40,7 +39,7 @@ const Popoverr = () => {
           <p>Ingredient :</p>
           <Col className="popdesc">{i.description}</Col>
           <p>Price : ${i.price}</p>
-          {/* <div className="number"> */}
+
           <Row>
             <Col sm="5">
               <button onClick={(e) => subtractItem(e, i.id)}>-</button>
@@ -57,7 +56,7 @@ const Popoverr = () => {
               </Button>
             </Col>
           </Row>
-          {/* </div> */}
+
           <hr />
         </div>
       ))}

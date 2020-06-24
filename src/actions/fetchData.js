@@ -1,7 +1,5 @@
 import React from "react";
 import axios from "axios";
-//import { browserHistory } from "react-router-dom";
-//const API_URL = "http://127.0.0.1:8000/api";
 import { Redirect } from "react-router-dom";
 import { Link, BrowserRouter, Switch, Route } from "react-router-dom";
 import history from "../history.js";
@@ -9,14 +7,13 @@ import {
   fetchDataRequest,
   fetchDataSuccess,
   fetchDataError,
-  // SIGNIN_USER,
   signinUserSuccess,
+  SigninError,
   authError,
   orderSuccess,
   orderError,
 } from "./action";
 
-//const api_token = "null";
 export function fetchProducts() {
   return (dispatch) => {
     dispatch(fetchDataRequest());
@@ -35,8 +32,6 @@ export function signinUser({ name, email }) {
   let token;
 
   return (dispatch) => {
-    // dispatch(SIGNIN_USER());
-
     axios
       .post("http://127.0.0.1:8000/api/login", { name, email })
       .then((response) => {
@@ -47,17 +42,18 @@ export function signinUser({ name, email }) {
             response.data.data.user.email
           )
         );
-        // console.log(name);
+
         localStorage.setItem(
           "auth",
           (token = response.data.data.user.api_token)
         );
 
         console.log(token);
+      })
 
-        // history.push("/cart");
+      .catch((error) => {
+        dispatch(SigninError(error));
       });
-    //dispatch(authError(confirm("somting wrong")));
   };
 }
 
@@ -80,18 +76,7 @@ export function order({
   console.log(token);
   console.log(customer_name);
   console.log(customer_email);
-  // let data = [0][1];
-
-  // let json = JSON.stringify(data);
-  // let items = { json_data: json };
-  // let items = {
-  //   items: [0][1],
-  //   items: [0][1],
-  //   items: [1][1],
-  //   items: [1][1],
-  // };
   return (dispatch) => {
-    // dispatch(orderDataRequest());
     axios
       .post(
         "http://127.0.0.1:8000/api/orders",
@@ -106,12 +91,6 @@ export function order({
           items,
         },
         token
-        // {
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //     Authorization: `Bearer  ${tokenn}`,
-        //   },
-        //}
       )
 
       .then((response) => {

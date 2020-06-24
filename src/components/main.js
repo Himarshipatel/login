@@ -18,18 +18,9 @@ const Main = () => {
   }, [dispatch]);
 
   return (
-    // <BrowserRouter>
     <div>
       <Navbar />
-      {/* <Success /> */}
-      {/* <Success /> */}
-      {/* <Approuter /> */}
-      {/* <Switch> */}
-      {/* <Route path="/" component={Vieworder} /> */}
-      {/* <Route path="/success" component={Vieworder} />
-        </Switch> */}
     </div>
-    //</BrowserRouter>
   );
 };
 

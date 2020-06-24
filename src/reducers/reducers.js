@@ -102,6 +102,9 @@ function reducer(state = initialState, action) {
         username: action.payload,
         authenticated: true,
       };
+    case "Login_Error":
+      return { ...state, error: action.payload };
+
     case "AUTH_ERROR":
       return { ...state, error: action.payload };
 

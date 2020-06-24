@@ -3,7 +3,7 @@ import { Col, Button } from "reactstrap";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { order } from "../actions/fetchData.js";
-//import { Redirect } from "react-router-dom";
+
 import { Link, BrowserRouter, Switch, Route } from "react-router-dom";
 
 import * as Yup from "yup";

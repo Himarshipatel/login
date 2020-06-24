@@ -1,13 +1,3 @@
-// import React from "react";
-// import { Col, Row } from "reactstrap";
-// const Navbar = () => {
-//   return (
-//     <div>
-//       <Col >hi</Col>
-//     </div>
-//   );
-// };
-// export default Navbar;
 import React, { useState } from "react";
 import { Link, BrowserRouter, Switch, Route } from "react-router-dom";
 import {
@@ -17,14 +7,13 @@ import {
   PopoverHeader,
   UncontrolledPopover,
   PopoverBody,
-  // Popover,
 } from "reactstrap";
 import Carousel from "react-bootstrap/Carousel";
 import Login from "./Login";
 import Vieworder from "./Vieworder.js";
 import Myorder from "./Myorder.js";
 import Protected from "./Protected";
-//import history from "../history.js";
+
 import CartList from "./cartList.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
@@ -41,7 +30,7 @@ import {
 } from "reactstrap";
 import { Redirect } from "react-router-dom";
 import Form from "./Form.js";
-//import Total from "./total.js";
+
 import Image from "react-bootstrap/Image";
 
 const Navbar = (props) => {
@@ -51,7 +40,6 @@ const Navbar = (props) => {
 
   const toggle = () => setModal(!modal);
   var auth = localStorage.getItem("auth");
-  console.log(auth);
 
   return (
     <BrowserRouter>
@@ -172,8 +160,6 @@ const Navbar = (props) => {
                 </Carousel>
               </Col>
             </Col>
-            {/* </Col> */}
-            {/* <Route path="/success" component={Vieworder} /> */}
             {auth ? (
               <div>
                 <Redirect to="/"></Redirect>
@@ -190,16 +176,7 @@ const Navbar = (props) => {
                 <Redirect to="/login"></Redirect>
               </div>
             )}
-            <Switch>
-              {/* { */}
-              {/* <Route path="/login">
-              <Login />
-            </Route> */}
-
-              {/* <Route path="/">
-              <Protected cmp={ItemList} />
-            </Route> */}
-            </Switch>
+            <Switch></Switch>
           </Row>
         </div>
         <div className="modal">
@@ -214,12 +191,6 @@ const Navbar = (props) => {
             </ModalBody>
           </Modal>
         </div>
-
-        {/* <Route path="/myorder" component={Myorder} /> */}
-        {/* <Switch>
-      //   <Route path="/placeorder" component={Vieworder} />
-      // </Switch> */}
-        {/* <Route path="/success" component={Vieworder} /> */}
       </div>
     </BrowserRouter>
   );

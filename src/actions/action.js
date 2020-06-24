@@ -8,6 +8,7 @@ import {
   REMOVE_ITEM_FROM_CART,
   SIGNIN_USER_SUCCESS,
   AUTH_ERROR,
+  Login_Error,
   ORDER_SUCCESS,
   ORDER_ERROR,
 } from "./actionType";
@@ -84,3 +85,9 @@ export const orderError = (error) => {
     payload: error,
   };
 };
+export function SigninError(error) {
+  return {
+    type: Login_Error,
+    payload: { error },
+  };
+}

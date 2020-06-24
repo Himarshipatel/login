@@ -6,19 +6,16 @@ import { Button, Card, Row, Col } from "reactstrap";
 import Image from "react-bootstrap/Image";
 import Navbar from "./Navbar";
 const ItemList = () => {
-  // const item = useSelector((state) => state.products.item);
-  //const cart = useSelector((state) => state.products.cart);
-  // const total = useSelector((state) => state.products.total);
   const { item } = useSelector((state) => ({
     item: state.products.item,
   }));
-  console.log(item);
+
   const dispatch = useDispatch();
 
   const addToCartItem = (e, id) => {
     dispatch(addToCart(id));
   };
-  console.log(addToCart);
+
   const addItem = (e, id) => {
     dispatch(add(id));
   };
@@ -29,7 +26,6 @@ const ItemList = () => {
 
   return (
     <div>
-      {/* <Navbar /> */}
       <div>
         <br />
         <h3 className="natural">natural Ingredient</h3>
@@ -91,11 +87,5 @@ const ItemList = () => {
       </Row>
     </div>
   );
-
-  // const mapStateToProps = (state) => ({
-  //   item: state.products.item,
-  //   cart: state.products.cart,
-  //   total: state.products.total,
-  // });
 };
 export default ItemList;

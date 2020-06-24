@@ -16,21 +16,13 @@ const CartList = () => {
   const addItem = (e, id) => {
     dispatch(add(id));
   };
-  // const addItem = (e, product_id) => {
-  //   dispatch(add(product_id));
-  // };
   const subtractItem = (e, id) => {
     dispatch(subtract(id));
   };
 
   const removeItem = (e, id, amount) => {
-    // console.log("amount", amount);
     dispatch(removeItemFromCart(id, amount));
   };
-  //console.log(cart);
-  // useEffect(() => {
-  //   dispatch(order(i));
-  // }, [dispatch, i]);
 
   return (
     <Container>
@@ -55,7 +47,7 @@ const CartList = () => {
                 <p> Ingredient :</p>
                 <p>{i.description}</p>
                 <p>Price : ${i.price}</p>
-                {/* <div className="number"> */}
+
                 <Row>
                   <Col sm="6">
                     <button onClick={(e) => subtractItem(e, i.id)}>-</button>
@@ -74,8 +66,6 @@ const CartList = () => {
                     </Button>
                   </Col>
                 </Row>
-
-                {/* </div> */}
               </Col>
             </Row>
           </div>
@@ -84,14 +74,6 @@ const CartList = () => {
       <div className="total">
         <Total />
         <Form />
-        {/* <BrowserRouter>
-          <Switch>
-            <Link to="/Form">
-              <Button color="success">Confirm Order</Button>
-            </Link>
-            <Route path="/Form" component={Form} />
-          </Switch>
-        </BrowserRouter> */}
       </div>
     </Container>
   );
