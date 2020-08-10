@@ -1,18 +1,22 @@
 import React from "react";
-import { Link, BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Button } from "reactstrap";
-
+import { Col, Row, Container } from "reactstrap";
 const Vieworder = () => {
   return (
-    <div>
-      <div className="ordersuccess">congratulation Your Order Placed</div>
+    <Container fluid={true}>
+      <Row>
+        <Col className="ordersuccess">
+          congratulation Your Order Placed Successfully
+        </Col>
 
-      <Link to="/myorder">
+        {/* <Link to="/">
         <Button color="danger" className="myorder">
-          My Order
+          Back
         </Button>
-      </Link>
-    </div>
+      </Link> */}
+      </Row>
+    </Container>
   );
 };
 export default Vieworder;

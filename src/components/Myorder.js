@@ -5,50 +5,58 @@ import { add, subtract, removeItemFromCart } from "../actions/action";
 import { Col, Row, Container, Button } from "reactstrap";
 import Total from "./total.js";
 import Form from "./Form.js";
+import Moment from "react-moment";
+import { useHistory } from "react-router-dom";
+
 import { Switch, BrowserRouter, Link, Route } from "react-router-dom";
 import Navbar from "./Navbar";
+import { myOrder } from "../actions/fetchData";
+
 const Myorder = () => {
-  const { cart } = useSelector((state) => ({
-    cart: state.products.cart,
+  const { order } = useSelector((state) => ({
+    order: state.products.order,
   }));
+  console.log(order);
 
   const dispatch = useDispatch();
-  const addItem = (e, id) => {
-    dispatch(add(id));
-  };
-
-  const subtractItem = (e, id) => {
-    dispatch(subtract(id));
-  };
-
-  const removeItem = (e, id, amount) => {
-    dispatch(removeItemFromCart(id, amount));
-  };
+  const history = useHistory();
+  useEffect(() => {
+    dispatch(myOrder());
+  }, [dispatch]);
 
   return (
-    <Container>
-      <div className="myordertitle">
-        <h1>My Order</h1>
-      </div>
-
-      {cart.map((i, j) => (
-        <ul key={j}>
-          <Row>
-            <div className="myorderdesc" sm="6">
-              <img
-                src={i.image}
-                alt="loading..."
-                width="400px"
-                height="200px"
-              />
-            </div>
-            <div className="myorderdetails" sm="6">
-              <h3>{i.name}</h3>
-              Quantity : {i.quantity}
-            </div>
-          </Row>
-        </ul>
-      ))}
+    <Container fluid={true}>
+      <Col className="orderdesc">
+        <h1> My Order</h1>
+      </Col>
+      <Row>
+        <Col className="myorderlist">
+          {order
+            .slice(0)
+            .reverse()
+            .map((i, j) => (
+              <li key={j} className="listing">
+                <Moment format="Do MMM YYYY">{i.created_at}</Moment>
+                <br />
+                order number:{i.order_number}
+                <br />
+                Status:{i.status}
+                <br />
+                Total : {i.subtotal}
+                <br />
+                Tax:{i.tax}
+                <br />
+                Delivery Charge: {i.delivery_charge}
+                <br />
+                Total Charge :
+                {(i.subtotal = i.subtotal + i.tax + i.delivery_charge)}
+                <br />
+                <hr />
+                <br />
+              </li>
+            ))}
+        </Col>
+      </Row>
     </Container>
   );
 };

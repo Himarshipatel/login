@@ -1,5 +1,7 @@
 let initialState = {
   loading: false,
+  cart: null,
+  order: [],
   item: [],
   cart: [],
   total: 0,
@@ -9,7 +11,7 @@ let initialState = {
   email: [],
 };
 
-function reducer(state = initialState, action) {
+function products(state = initialState, action) {
   var foundIndex = 0;
   var foundIndexCart = 0;
   var { item, cart, total } = state;
@@ -111,10 +113,8 @@ function reducer(state = initialState, action) {
     case "ORDER_SUCCESS":
       return {
         ...state,
-        items: [],
-        error: null,
-        //username: action.payload,
-        authenticated: true,
+        loading: false,
+        order: action.order,
       };
     case " ORDER_ERROR":
       return { ...state, error: action.payload };
@@ -124,4 +124,4 @@ function reducer(state = initialState, action) {
   }
 }
 
-export default reducer;
+export default products;

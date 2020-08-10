@@ -73,10 +73,10 @@ export const authError = (error) => {
     payload: error,
   };
 };
-export function orderSuccess(item) {
+export function orderSuccess(order) {
   return {
     type: ORDER_SUCCESS,
-    item,
+    order,
   };
 }
 export const orderError = (error) => {

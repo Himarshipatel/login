@@ -8,7 +8,7 @@ const Popoverr = () => {
   const { cart } = useSelector((state) => ({
     cart: state.products.cart,
   }));
-
+  console.log(cart);
   const dispatch = useDispatch();
   const addItem = (e, id) => {
     dispatch(add(id));
@@ -23,44 +23,55 @@ const Popoverr = () => {
   };
 
   return (
-    <div>
-      {cart.map((i, j) => (
-        <div key={i.id}>
-          <Image
-            src={i.image}
-            alt="loading..."
-            width="200px"
-            height="200px"
-            className="Image"
-            roundedCircle
-          />
+    <>
+      {cart == 0 ? (
+        <div className="cartempty">Cart Empty</div>
+      ) : (
+        <div>
+          {cart.map((i, j) => (
+            <>
+              {/* {!i.id ? (
+              <div>no data</div>
+            ) : ( */}
+              <div key={i.id}>
+                <Image
+                  src={i.image}
+                  alt="loading..."
+                  width="200px"
+                  height="200px"
+                  className="Image"
+                  roundedCircle
+                />
 
-          <h3>{i.name}</h3>
-          <p>Ingredient :</p>
-          <Col className="popdesc">{i.description}</Col>
-          <p>Price : ${i.price}</p>
+                <h3>{i.name}</h3>
+                <p>Ingredient :</p>
+                <Col className="popdesc">{i.description}</Col>
+                <p>Price : ${i.price}</p>
 
-          <Row>
-            <Col sm="5">
-              <button onClick={(e) => subtractItem(e, i.id)}>-</button>
-              <button>{i.quantity}</button>
-              <button onClick={(e) => addItem(e, i.id)}>+</button>
-            </Col>
-            <br />
-            <Col sm="4">
-              <Button
-                color="danger"
-                onClick={(e) => removeItem(e, i.id, i.price * i.quantity)}
-              >
-                Remove
-              </Button>
-            </Col>
-          </Row>
+                <Row>
+                  <Col sm="5">
+                    <button onClick={(e) => subtractItem(e, i.id)}>-</button>
+                    <button>{i.quantity}</button>
+                    <button onClick={(e) => addItem(e, i.id)}>+</button>
+                  </Col>
+                  <br />
+                  <Col sm="4">
+                    <Button
+                      color="danger"
+                      onClick={(e) => removeItem(e, i.id, i.price * i.quantity)}
+                    >
+                      Remove
+                    </Button>
+                  </Col>
+                </Row>
 
-          <hr />
+                <hr />
+              </div>
+            </>
+          ))}
         </div>
-      ))}
-    </div>
+      )}
+    </>
   );
 };
 export default Popoverr;

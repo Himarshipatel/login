@@ -67,6 +67,8 @@ code {
 .subtitle {
   font-size: 20px;
   color: lightgray;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .moredeal {
   height: 50px;
@@ -79,7 +81,7 @@ code {
   border: 1px solid black;
 }
 .menu {
-  padding-left: 10px;
+  /* padding-left: 10px; */
   margin-top: 30px;
 }
 .content {
@@ -117,12 +119,10 @@ code {
 .offer {
   color: white;
   text-align: center;
+  font-size: 32px;
+  font-weight: bold;
 }
-.cardd {
-  margin-left: 130px;
-  /* height: 470px; */
-  margin-bottom: 30px;
-}
+
 /* --form-- */
 .form {
   margin-top: 30px;
@@ -201,7 +201,6 @@ code {
 }
 .displaydesc {
   display: inline;
-  margin-left: 310px;
 }
 .deskdiv {
   text-align: center;
@@ -213,9 +212,7 @@ code {
   margin-left: 60px;
 }
 .orderdesc {
-  margin-left: 68%;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  text-align: center;
 }
 .butnum {
   width: 100%;
@@ -231,9 +228,10 @@ code {
   width: 100%;
 }
 .loginbutton {
-  margin-left: 5px;
-  height: 50px;
-  width: 150px;
+  height: 40px;
+  width: 100px;
+  margin-left: 10px;
+  margin-top: 5px;
   border-radius: 25px;
 }
 .modal {
@@ -241,22 +239,30 @@ code {
 }
 .ordersuccess {
   color: lightgreen;
-  margin-left: 500px;
+
+  text-align: center;
   margin-top: 100px;
   margin-bottom: 100px;
-  font-size: 50px;
+  font-size: 40px;
   font-weight: bold;
 }
-.myorder {
+/* .myorder {
   margin-left: 60%;
   width: 20%;
   margin-bottom: 10px;
-}
+} */
 .yourdetails {
-  margin-left: 68%;
+  margin-top: 10px;
+  text-align: center;
+}
+.flield {
+  width: 600px;
+}
+.validate {
+  width: 500px;
+  text-align: right;
 }
 .form {
-  margin-left: 25%;
   text-align: center;
   border: 1px solid lightgray;
 }
@@ -275,5 +281,156 @@ code {
   display: inline;
 }
 .placeorderbutton {
+  margin-bottom: 10px;
   width: 500px;
+}
+.space {
+  margin-top: 10px;
+}
+
+.pizzaname {
+  font-size: 20px;
+  text-align: center;
+  border: 1px solid black;
+}
+.itemslist {
+  width: 100%;
+}
+.navbarbaner {
+  border: 1px solid black;
+}
+.ban1 {
+  display: inline;
+}
+.ban2 {
+  display: inline;
+}
+.myorder {
+  text-align: center;
+  width: 100vh;
+  margin-left: 50%;
+}
+.username {
+  width: 100%;
+}
+.headname {
+  text-align: center;
+  font-weight: bold;
+  font-size: 22px;
+}
+/* ------------------------- */
+.navmenu {
+  height: 615px;
+  border-bottom: 1px solid lightgrey;
+}
+.bansidebar {
+  background-color: #e41515;
+}
+.banlabel {
+  padding-top: 15%;
+  text-align: center;
+}
+.navcolor {
+  background-color: #1a1a1a;
+}
+.menu {
+  padding: 10px;
+  color: white;
+}
+/* --------------itemlist-------------- */
+.cartempty {
+  text-align: center;
+}
+.cardd {
+  padding: 10px;
+  /* height: 470px; */
+  margin-bottom: 30px;
+  margin-left: 30px;
+}
+.carddrow {
+  padding-left: 5%;
+}
+
+@media only screen and (max-device-width: 1024px) {
+  .cardd {
+    padding: 10px;
+    /* height: 470px; */
+    margin-bottom: 30px;
+    margin-left: 10px;
+  }
+  .carddrow {
+    padding-left: 4%;
+  }
+}
+@media only screen and (max-device-width: 768px) {
+  .cardd {
+    padding: 10px;
+    /* height: 470px; */
+    margin-bottom: 30px;
+    margin-left: 30px;
+  }
+  .carddrow {
+    padding-left: 5%;
+  }
+}
+@media only screen and (max-device-width: 425px) {
+  .cardd {
+    padding: 10px;
+    /* height: 470px; */
+    margin-bottom: 30px;
+    margin-left: 30px;
+  }
+  .carddrow {
+    margin-top: 20px;
+    padding-left: 8%;
+  }
+  .natural {
+    margin-top: 250px;
+  }
+  .moredeal {
+    height: 40px;
+    margin-bottom: 5px;
+  }
+}
+@media only screen and (max-device-width: 375px) {
+  .cardd {
+    padding: 10px;
+    /* height: 470px; */
+    margin-bottom: 30px;
+    margin-left: 0px;
+  }
+  .carddrow {
+    margin-top: 20px;
+    padding-left: 11%;
+  }
+  .natural {
+    margin-top: 250px;
+  }
+  .moredeal {
+    height: 40px;
+    margin-bottom: 5px;
+  }
+}
+@media only screen and (max-device-width: 320px) {
+  .cardd {
+    padding: 10px;
+    /* height: 470px; */
+    margin-bottom: 30px;
+    margin-left: 0px;
+  }
+  .carddrow {
+    margin-top: 20px;
+    padding-left: 3%;
+  }
+  .natural {
+    margin-top: 250px;
+  }
+  .moredeal {
+    height: 40px;
+    margin-bottom: 5px;
+  }
+}
+
+.listing {
+  list-style: none;
 }
